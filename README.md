@@ -82,7 +82,13 @@ https://cloud.mongodb.com/v2#/org/6ae34e530a48fbd3acf0af8e/projects
 
 live
 vercel
-https://vercel.com/prince8217/smart-attendance-system/GVcRWYZnJEdzGEpxLUJvjurngtid
+<!-- https://vercel.com/prince8217/smart-attendance-system/GVcRWYZnJEdzGEpxLUJvjurngtid -->
 
 
-https://smart-attendance-system-one-alpha.vercel.app/login.html
+<!-- https://smart-attendance-system-one-alpha.vercel.app/login.html -->
+
+
+
+
+
+https://smart-attendance-system-v2.vercel.app/login.html

@@ -712,10 +712,16 @@ app.get('/api/students/:uid/report', auth, h(async (req, res) => {
 
 /* ---------- institute timetable ---------- */
 // function parseDay(v) { const k = String(v || '').trim().toLowerCase().slice(0, 3); const i = k.length === 3 ? DAYS.findIndex(d => d.toLowerCase().startsWith(k)) : -1; return i >= 1 && i <= 6 ? DAYS[i] : null; }
+// function parseDay(v) {
+//   const k = String(v || '').trim().toLowerCase().slice(0, 3);
+//   const i = k.length === 3 ? DAYS.findIndex(d => d.toLowerCase().startsWith(k)) : -1;
+//   return i >= 1 && i <= 6 ? DAYS[i] : null;   // <-- i >= 1 excludes Sunday (index 0)
+// }
+
 function parseDay(v) {
   const k = String(v || '').trim().toLowerCase().slice(0, 3);
   const i = k.length === 3 ? DAYS.findIndex(d => d.toLowerCase().startsWith(k)) : -1;
-  return i >= 1 && i <= 6 ? DAYS[i] : null;   // <-- i >= 1 excludes Sunday (index 0)
+  return i >= 0 ? DAYS[i] : null;
 }
 function parseTime(v) {
   const m = String(v || '').trim().match(/^(\d{1,2})\s*[:.]\s*(\d{2})(?::\d{2})?\s*([ap]m)?$/i); if (!m) return null;

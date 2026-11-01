@@ -143,3 +143,4 @@ className,day,startTime,endTime,subject,room,teacherCodes,teachers,type,groups
 25MCA-1,Saturday,21:00,21:50,Computer Networks,R101,E15037,Prof. Simran Kaur,lecture,
 25MAM-2,Saturday,22:00,22:50,Data Structures,R101,E22041,Mr. Arjun Mehta,lecture,
 25MCA-1,Saturday,23:00,23:50,Machine Learning,R101,E22041,Mr. Arjun Mehta,lecture,
+25MCA-1,Sunday,21:00,21:30,Machine Learning,R105,E9581,Mr. Prince Kumar,lecture,

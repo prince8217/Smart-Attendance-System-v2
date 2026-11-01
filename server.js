@@ -283,12 +283,21 @@ app.use('/vendor/bootstrap', express.static(path.join(__dirname, 'node_modules/b
 app.use('/vendor/chartjs', express.static(path.join(__dirname, 'node_modules/chart.js/dist')));
 
 /* ---------- helpers ---------- */
+const TZ = process.env.APP_TZ || 'Asia/Kolkata';
+const clock = () => Object.fromEntries(
+  new Intl.DateTimeFormat('en-GB', {
+    timeZone: TZ, year: 'numeric', month: '2-digit', day: '2-digit',
+    hour: '2-digit', minute: '2-digit', second: '2-digit', hourCycle: 'h23'
+  }).formatToParts(new Date()).map(p => [p.type, p.value])
+);
+const todayISO = () => { const c = clock(); return `${c.year}-${c.month}-${c.day}`; };
+const nowMin = () => { const c = clock(); return +c.hour * 60 + +c.minute + +c.second / 60; };
 const pad = n => String(n).padStart(2, '0');
 const DAYS = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 const HHMM = /^([01]\d|2[0-3]):[0-5]\d$/;
-const todayISO = () => { const d = new Date(); return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`; };
+// const todayISO = () => { const d = new Date(); return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`; };
 const weekdayFor = date => DAYS[new Date(`${date}T12:00:00`).getDay()];
-const toMin = t => { const [h, m] = t.split(':').map(Number); return h * 60 + m; };
+// const toMin = t => { const [h, m] = t.split(':').map(Number); return h * 60 + m; };
 const nowMin = () => { const d = new Date(); return d.getHours() * 60 + d.getMinutes() + d.getSeconds() / 60; };
 const roomKey = v => String(v || '').toUpperCase().replace(/[^A-Z0-9]/g, '');
 const bad = (m, s = 400) => Object.assign(new Error(m), { status: s });
